@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Dinnr</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111;
+      color: #f2f2f2;
+      line-height: 1.7;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 700; color: #e07040; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    .nav-links a:hover { color: #f2f2f2; }
+    .nav-links a.active { color: #f2f2f2; }
+    .container { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    h1 { font-size: 2rem; color: #fff; margin-bottom: 0.5rem; }
+    .subtitle { color: #888; font-size: 1rem; margin-bottom: 3rem; }
+    h2 { font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem; }
+    .faq { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-top: 1px solid #1e1e1e;
+      padding: 1.5rem 0;
+    }
+    .faq-item:last-child { border-bottom: 1px solid #1e1e1e; }
+    .faq-item p { color: #999; font-size: 0.95rem; margin-top: 0.4rem; }
+    a { color: #e07040; }
+    .contact-box {
+      margin-top: 3.5rem;
+      background: #1a1a1a;
+      border: 1px solid #252525;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .contact-box h2 { margin-bottom: 0.5rem; }
+    .contact-box p { color: #888; font-size: 0.9rem; margin-bottom: 1.25rem; }
+    .contact-btn {
+      display: inline-block;
+      background: #e07040;
+      color: #fff;
+      padding: 0.7rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: #c85e30; }
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+    }
+    footer a { color: #666; text-decoration: none; }
+    footer a:hover { color: #aaa; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">dinnr</a>
+    <div class="nav-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/support" class="active">Support</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Support</h1>
+    <p class="subtitle">Frequently asked questions and contact information.</p>
+
+    <div class="faq">
+
+      <div class="faq-item">
+        <h2>How do I add a recipe?</h2>
+        <p>Tap the + button in the top right of the recipe library. Paste a URL from any website or YouTube video and Dinnr will extract the recipe automatically. You can also upload photos of a printed recipe.</p>
+      </div>
+
+      <div class="faq-item">
+        <h2>Which websites are supported?</h2>
+        <p>Most recipe websites work out of the box. YouTube videos with recipe descriptions or spoken instructions are also supported. A small number of sites block automated access and cannot be extracted.</p>
+      </div>
+
+      <div class="faq-item">
+        <h2>How do I add a recipe to the meal planner?</h2>
+        <p>Open a recipe, tap the three-dot menu in the top right, and choose "Add to Planner". Select the day and meal type, then save.</p>
+      </div>
+
+      <div class="faq-item">
+        <h2>How do I generate a grocery list from a recipe?</h2>
+        <p>Open a recipe and tap "Add to Groceries" from the menu. Ingredients will be added to your grocery list and grouped by supermarket section automatically.</p>
+      </div>
+
+      <div class="faq-item">
+        <h2>Is my data backed up?</h2>
+        <p>Yes — your recipes, meal plans, and grocery lists are synced to the cloud via Supabase and available on any device you sign in to. You can also export a full backup as JSON from Settings → Backup Recipes.</p>
+      </div>
+
+      <div class="faq-item">
+        <h2>How do I delete my account?</h2>
+        <p>Go to Settings → Delete Account. This permanently deletes all your data from our servers and cannot be undone.</p>
+      </div>
+
+      <div class="faq-item">
+        <h2>Is Dinnr free?</h2>
+        <p>Yes, Dinnr is currently free to use.</p>
+      </div>
+
+    </div>
+
+    <div class="contact-box">
+      <h2>Still need help?</h2>
+      <p>Send us an email and we'll get back to you as soon as possible.</p>
+      <a class="contact-btn" href="mailto:df@derekfidler.com">Email support</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/support">Support</a>
+    </div>
+    <p>&copy; 2026 Dinnr. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
