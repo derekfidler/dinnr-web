@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "agent",
+            "if": "Bash(gh pr create*)",
+            "statusMessage": "Running QA pipeline (reviewer → tester → release gate)...",
+            "timeout": 300,
+            "model": "claude-sonnet-4-6",
+            "prompt": "A pull request was just created on this branch. Your job is to run the full QA pipeline on the changes and report the results back.\n\n## Step 1 — Get context\nRun these commands to understand what changed:\n- `git diff HEAD~1 HEAD --name-only` (changed files)\n- `git diff HEAD~1 HEAD` (full diff)\n- `gh pr view` (PR title, body, URL)\n\n## Step 2 — Run the pipeline in sequence\n\nUsing the Agent tool, invoke each sub-agent in order. Pass each agent the git diff and file list as context.\n\n1. **qa-reviewer** — review the changed files for correctness, regressions, edge cases, and security issues. Pass it: the full diff, the list of changed files, and the PR description.\n\n2. **qa-tester** — validate behavior through targeted testing. Pass it: the changed files, the diff, and the qa-reviewer findings.\n\n3. **release-gate** — issue an APPROVED, APPROVED WITH RISKS, or BLOCKED verdict. Pass it: the changed files, the diff, the qa-reviewer findings, and the qa-tester results.\n\n## Step 3 — Return results as additionalContext\n\nFormat your final output as a structured summary:\n\n```\nQA PIPELINE RESULT: [APPROVED | APPROVED WITH RISKS | BLOCKED]\n\nRelease Gate Verdict: [verdict and 1-2 sentence summary]\n\nQA Reviewer Findings: [brief summary of findings by severity, or \"No issues found\"]\n\nQA Tester Results: [brief summary of test results, or \"No tests applicable\"]\n\n[If BLOCKED] REQUIRED FIXES for minimal-builder:\n1. [Specific issue to fix with file reference]\n2. [Specific issue to fix with file reference]\n...\n\n[If APPROVED WITH RISKS] ACKNOWLEDGED RISKS:\n- [Risk 1]\n- [Risk 2]\n```\n\nIf the pipeline is BLOCKED, the main Claude thread will invoke the minimal-builder agent with your required fixes list to resolve the issues and push a new commit."
+          }
+        ]
+      }
+    ]
+  }
+}
