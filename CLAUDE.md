@@ -27,12 +27,14 @@ After every `gh pr create`, the QA pipeline runs automatically via hook (up to 3
 4. **If BLOCKED** → **minimal-builder** applies the required fixes → commits → pushes → pipeline restarts from step 1
 5. **Loop ends** when APPROVED or after 3 failed attempts
 
-When the loop ends, a pipeline summary is displayed in the session showing:
-- Final status and attempt count
-- Issues found / fixed / remaining
-- Release gate verdict
-- Vercel preview deployment URL
-- Version identifier (derived from Vercel deployment hash, e.g. `v-abc123`)
+When the pipeline passes, the orchestrator automatically:
+1. Merges the PR (`gh pr merge --squash --auto --delete-branch`)
+2. Waits for Vercel to deploy
+3. Reports the deployment URL and version (e.g. `v-abc1def23` derived from the Vercel deployment hash)
+
+If the pipeline fails after 3 attempts, the PR is **not** merged and blockers are listed.
+
+The final pipeline summary includes: status, attempt count, issues found/fixed, release gate verdict, deployment URL, and version.
 
 ### Always Open a PR After Making Changes
 After every set of file edits, commit and open a PR without being asked. See PR Creation rules above for the correct two-step Bash pattern.
