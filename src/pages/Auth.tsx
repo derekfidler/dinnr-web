@@ -88,7 +88,7 @@ export default function Auth() {
           try {
             // Rewrite the custom scheme URL to the canonical Supabase callback URL so
             // that URL parsing and query-string extraction work correctly.
-            const callbackBase = "https://zvwybyootzmrrvyxctgm.supabase.co/auth/v1/callback";
+            const callbackBase = `${import.meta.env.VITE_SUPABASE_URL}/auth/v1/callback`;
             // Use global regex so all occurrences are replaced (String.replace with a
             // string literal only replaces the first match).
             const rawUrl = callbackUrl.replace(/dinnr:\/\/auth\/callback/g, callbackBase);
@@ -179,7 +179,7 @@ export default function Auth() {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "apple",
-        options: { redirectTo: window.location.origin },
+        options: { redirectTo: window.location.origin + '/app' },
       });
       if (error) {
         toast({ title: t("error"), description: error.message, variant: "destructive" });
@@ -229,7 +229,7 @@ export default function Auth() {
           try {
             // Rewrite the custom scheme URL to the canonical Supabase callback URL so
             // that URL parsing and query-string extraction work correctly.
-            const callbackBase = "https://zvwybyootzmrrvyxctgm.supabase.co/auth/v1/callback";
+            const callbackBase = `${import.meta.env.VITE_SUPABASE_URL}/auth/v1/callback`;
             // Use global regex so all occurrences are replaced (String.replace with a
             // string literal only replaces the first match).
             const rawUrl = callbackUrl.replace(/dinnr:\/\/auth\/callback/g, callbackBase);
@@ -315,7 +315,7 @@ export default function Auth() {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: window.location.origin },
+        options: { redirectTo: window.location.origin + '/app' },
       });
       if (error) {
         toast({ title: t("error"), description: error.message, variant: "destructive" });
