@@ -27,13 +27,13 @@ export default function Auth() {
     );
   }
 
-  if (user) {
-    return <Navigate to="/" replace />;
-  }
-
   // In Electron, window.location.origin is "null" (file:// protocol).
   // Use undefined so Supabase falls back to the configured Site URL.
   const isElectron = window.electronAPI?.isElectron === true;
+
+  if (user) {
+    return <Navigate to={isElectron ? "/" : "/app"} replace />;
+  }
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
