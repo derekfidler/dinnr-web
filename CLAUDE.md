@@ -18,13 +18,21 @@ gh pr create --title "..." --body "..."
 git push -u origin branch-name && gh pr create --title "..." --body "..."
 ```
 
-### QA Pipeline (automated)
-After every `gh pr create`, the QA pipeline runs automatically via hook:
+### QA Pipeline (automated self-healing loop)
+After every `gh pr create`, the QA pipeline runs automatically via hook (up to 3 attempts):
+
 1. **qa-reviewer** — reviews changes for correctness, regressions, edge cases
 2. **qa-tester** — validates behavior through targeted testing
 3. **release-gate** — issues APPROVED / APPROVED WITH RISKS / BLOCKED verdict
+4. **If BLOCKED** → **minimal-builder** applies the required fixes → commits → pushes → pipeline restarts from step 1
+5. **Loop ends** when APPROVED or after 3 failed attempts
 
-If the release gate returns **BLOCKED**, use the **minimal-builder** agent to fix the reported issues, push the fix to the branch, and the pipeline will re-run automatically.
+When the loop ends, a pipeline summary is displayed in the session showing:
+- Final status and attempt count
+- Issues found / fixed / remaining
+- Release gate verdict
+- Vercel preview deployment URL
+- Version identifier (derived from Vercel deployment hash, e.g. `v-abc123`)
 
 ### Always Open a PR After Making Changes
 After every set of file edits, commit and open a PR without being asked. See PR Creation rules above for the correct two-step Bash pattern.
