@@ -1,0 +1,162 @@
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+
+export default function TermsOfService() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-background pb-16">
+      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-lg px-4 pt-6 pb-3 border-b border-border">
+        <div className="flex items-center gap-3 max-w-2xl mx-auto">
+          <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+          <h1 className="text-xl font-bold">Terms of Service</h1>
+        </div>
+      </header>
+
+      <div className="max-w-2xl mx-auto px-4 py-6">
+        <div className="prose prose-sm dark:prose-invert max-w-none">
+
+          <p className="text-muted-foreground text-sm">Last updated: 28 March 2026</p>
+
+          <p>
+            Please read these Terms of Service ("Terms") carefully before using DINNR. By creating an
+            account or using the app you agree to be bound by these Terms. If you do not agree, do not
+            use DINNR.
+          </p>
+
+          <h2>1. The service</h2>
+          <p>
+            DINNR is a recipe management and meal planning application operated by <strong>DINNR</strong>
+            {" "}("we", "us", "our"). The service allows you to save recipes from web sources, plan meals,
+            manage grocery lists, and more.
+          </p>
+
+          <h2>2. Eligibility</h2>
+          <p>
+            You must be at least 16 years old to use DINNR. By using the service you confirm that you
+            meet this requirement.
+          </p>
+
+          <h2>3. Your account</h2>
+          <p>
+            You are responsible for keeping your account credentials secure. You must notify us
+            immediately at <a href="mailto:support@dinnr.app">support@dinnr.app</a> if you believe your
+            account has been compromised. We are not liable for any loss resulting from unauthorised
+            access to your account.
+          </p>
+          <p>
+            Each account is for a single user. You may not share your account with others or create
+            multiple accounts to circumvent any limitations of the service.
+          </p>
+
+          <h2>4. Your content</h2>
+          <p>
+            You retain ownership of all recipes, notes, and other content you create or import into
+            DINNR ("Your Content"). By using the service you grant us a limited, non-exclusive licence
+            to store, process, and display Your Content solely for the purpose of providing the service
+            to you.
+          </p>
+          <p>
+            You are responsible for ensuring that Your Content does not infringe the intellectual
+            property rights of third parties. Recipes extracted from third-party websites remain subject
+            to the copyright of their original authors.
+          </p>
+
+          <h2>5. Acceptable use</h2>
+          <p>You agree not to:</p>
+          <ul>
+            <li>Use the service for any unlawful purpose or in violation of any regulations.</li>
+            <li>Attempt to reverse-engineer, decompile, or disassemble any part of the service.</li>
+            <li>Use automated means to access or scrape the service without our prior written consent.</li>
+            <li>Attempt to gain unauthorised access to other users' accounts or data.</li>
+            <li>Transmit any malicious code, viruses, or harmful material.</li>
+          </ul>
+
+          <h2>6. Third-party services</h2>
+          <p>
+            DINNR integrates with third-party services (Supabase for data storage, PostHog for
+            analytics, and Sentry for error monitoring). Your use of DINNR is also subject to the terms
+            and privacy policies of those services. We are not responsible for the actions or content of
+            third-party services.
+          </p>
+          <p>
+            Recipe extraction features retrieve publicly accessible content from third-party websites.
+            We do not guarantee the accuracy or completeness of extracted recipes and are not
+            responsible for changes to source content after extraction.
+          </p>
+
+          <h2>7. Service availability</h2>
+          <p>
+            We aim to keep DINNR available at all times but do not guarantee uninterrupted access. We
+            may perform maintenance, updates, or suspend the service at any time with or without notice.
+            We are not liable for any loss or inconvenience caused by downtime.
+          </p>
+
+          <h2>8. Intellectual property</h2>
+          <p>
+            All software, design, trademarks, and other intellectual property in DINNR (excluding Your
+            Content) are owned by or licensed to us. You may not use them without our prior written
+            permission.
+          </p>
+
+          <h2>9. Limitation of liability</h2>
+          <p>
+            To the maximum extent permitted by law, DINNR and its operators shall not be liable for any
+            indirect, incidental, special, consequential, or punitive damages arising from your use of,
+            or inability to use, the service — including loss of data, loss of revenue, or personal
+            injury.
+          </p>
+          <p>
+            Our total aggregate liability to you for any claim arising under these Terms shall not
+            exceed the amount you have paid to us in the 12 months preceding the claim, or €50 if no
+            payment has been made.
+          </p>
+
+          <h2>10. Data protection</h2>
+          <p>
+            Our collection and use of personal data is described in our{" "}
+            <button
+              onClick={() => {}} // handled by the link below
+              className="text-primary underline"
+            >
+              Privacy Policy
+            </button>
+            , which forms part of these Terms. By using DINNR you acknowledge that you have read and
+            understood the Privacy Policy.
+          </p>
+
+          <h2>11. Termination</h2>
+          <p>
+            You may stop using DINNR and delete your account at any time via Settings → Delete Account.
+            We may suspend or terminate your access if you breach these Terms. Upon termination, your
+            data will be deleted in accordance with our Privacy Policy.
+          </p>
+
+          <h2>12. Changes to these Terms</h2>
+          <p>
+            We may update these Terms from time to time. We will notify you of material changes via the
+            app. Continued use of DINNR after changes are posted constitutes acceptance of the updated
+            Terms.
+          </p>
+
+          <h2>13. Governing law</h2>
+          <p>
+            These Terms are governed by and construed in accordance with the laws of the European
+            Union. Any disputes shall be subject to the exclusive jurisdiction of the courts of the
+            EU member state in which you reside, or, where applicable, the courts of Sweden.
+          </p>
+
+          <h2>14. Contact</h2>
+          <p>
+            Questions about these Terms? Contact us at{" "}
+            <a href="mailto:support@dinnr.app">support@dinnr.app</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  );
+}

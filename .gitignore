@@ -1,1 +1,52 @@
+# Private keys and secrets
+files/
+build/certs/
+*.p8
+*.p12
+*.cer
+*.certSigningRequest
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+.env.*
+
+# Electron build output
+release/
+
+# Supabase temp files
+supabase/.temp/
+
+# Claude memory
+memory/
+.env.build
+
+# Claude pipeline runtime state (changes every run — not source)
+.claude/pipeline-state.json
+.claude/pipeline.log
+.claude/agent-memory/
 .vercel
