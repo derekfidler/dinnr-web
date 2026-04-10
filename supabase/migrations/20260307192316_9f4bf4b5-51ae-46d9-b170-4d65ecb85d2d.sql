@@ -1,1 +1,0 @@
-ALTER TABLE public.grocery_items ADD COLUMN recipe_name text DEFAULT NULL;

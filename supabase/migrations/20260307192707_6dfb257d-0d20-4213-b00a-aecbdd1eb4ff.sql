@@ -1,1 +1,0 @@
-ALTER TABLE public.grocery_items ADD COLUMN section text DEFAULT 'Other';
