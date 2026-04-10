@@ -158,7 +158,7 @@ export default function Auth() {
           setIsSigningIn(false);
         }, 5 * 60 * 1000);
       } catch (err: unknown) {
-        toast({ title: t("error"), description: err.message, variant: "destructive" });
+        toast({ title: t("error"), description: err instanceof Error ? err.message : String(err), variant: "destructive" });
       } finally {
         // If an error or early return prevented the callback from being registered,
         // we must reset state here. If the callback was registered, it owns the
@@ -176,17 +176,15 @@ export default function Auth() {
 
     // Web flow: redirectTo must match an entry in Supabase's redirect allow-list.
     setIsSigningIn(true);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "apple",
-        options: { redirectTo: window.location.origin + '/app' },
-      });
-      if (error) {
-        toast({ title: t("error"), description: error.message, variant: "destructive" });
-      }
-    } finally {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "apple",
+      options: { redirectTo: window.location.origin + '/app' },
+    });
+    if (error) {
+      toast({ title: t("error"), description: error.message, variant: "destructive" });
       setIsSigningIn(false);
     }
+    // On success, browser navigates away — no cleanup needed.
   };
 
   const handleGoogleSignIn = async () => {
@@ -294,7 +292,7 @@ export default function Auth() {
           setIsSigningIn(false);
         }, 5 * 60 * 1000);
       } catch (err: unknown) {
-        toast({ title: t("error"), description: err.message, variant: "destructive" });
+        toast({ title: t("error"), description: err instanceof Error ? err.message : String(err), variant: "destructive" });
       } finally {
         // If an error or early return prevented the callback from being registered,
         // we must reset state here. If the callback was registered, it owns the
@@ -312,17 +310,15 @@ export default function Auth() {
 
     // Web flow: redirectTo must match an entry in Supabase's redirect allow-list.
     setIsSigningIn(true);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: { redirectTo: window.location.origin + '/app' },
-      });
-      if (error) {
-        toast({ title: t("error"), description: error.message, variant: "destructive" });
-      }
-    } finally {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: window.location.origin + '/app' },
+    });
+    if (error) {
+      toast({ title: t("error"), description: error.message, variant: "destructive" });
       setIsSigningIn(false);
     }
+    // On success, browser navigates away — no cleanup needed.
   };
 
   return (
